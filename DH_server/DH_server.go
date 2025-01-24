@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Diffie-Hellman-Golang/utils"
+	"Cross-Language-Encryption/utils"
 	"fmt"
 	"math/big"
 	"net"
