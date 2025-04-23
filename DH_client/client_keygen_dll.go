@@ -6,6 +6,9 @@ import (
 	"net"
 )
 
+// IMPORTANT!!! The //export comment is required for CGo to know which function is being imported by C.
+// NOTE: C.char means C char, or a char that is readable by C.
+
 //export generateKey
 func generateKey() *C.char {
 	fmt.Println("Starting connection...")
