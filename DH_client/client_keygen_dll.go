@@ -19,7 +19,6 @@ func generateKey() *C.char {
 	}
 	client := NewClient(conn, 128)
 	client.keyAgreementClient()
-	fmt.Println("Agreed key is ", client.key.String())
 	return C.CString(client.key.String())
 }
 
