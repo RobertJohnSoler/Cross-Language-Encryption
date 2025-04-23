@@ -6,6 +6,7 @@ import (
 	"net"
 )
 
+//export generateKey
 func generateKey() *C.char {
 	fmt.Println("Starting connection...")
 	conn, err := net.Dial("tcp", "localhost:8080")
