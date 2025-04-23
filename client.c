@@ -3,6 +3,6 @@
 
 int main(){
     char* key = generateKey();
-    printf("%s \n", key);
+    printf("Shared key is %s. \n", key);
     return 0;
 }
