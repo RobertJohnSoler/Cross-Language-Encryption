@@ -16,19 +16,21 @@ int main(){
     unsigned char iv[] = "some random IV value";            // AES initialization value
     EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();             // create the AES cipher
     int outlen;
-    int inlen = sizeof(char);
-    EVP_EncryptInit_ex(ctx, EVP_aes_128_cbc(), NULL, key_chars, iv);    // initialize the AES cipher
+    
+    EVP_EncryptInit_ex(ctx, EVP_aes_128_cfb(), NULL, key_chars, iv);    // initialize the AES cipher
     
     char* plaintxt = "hello";
-    memcpy(input_buffer, plaintxt, sizeof("test"));
+    int inlen = strlen(plaintxt);
+    memcpy(input_buffer, plaintxt, strlen(plaintxt));
+
     EVP_EncryptUpdate(ctx, output_buffer, &outlen, input_buffer, inlen);
     
     printf("Plaintext is %s \n", input_buffer);
     printf("Ciphertext is %s \n", output_buffer);
 
-    EVP_DecryptInit_ex(ctx, EVP_aes_128_cbc(), NULL, key_chars, iv);
+    EVP_DecryptInit_ex(ctx, EVP_aes_128_cfb(), NULL, key_chars, iv);
     unsigned char decrypted_buffer[AES_BLOCK_SIZE];
-    EVP_DecryptUpdate(ctx, decrypted_buffer, &outlen, input_buffer, inlen);
+    EVP_DecryptUpdate(ctx, decrypted_buffer, &outlen, output_buffer, inlen);
     printf("Plaintext is %s \n", decrypted_buffer);
 
     return 0;
