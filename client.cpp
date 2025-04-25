@@ -26,5 +26,10 @@ int main(){
     printf("Plaintext is %s \n", input_buffer);
     printf("Ciphertext is %s \n", output_buffer);
 
+    EVP_DecryptInit_ex(ctx, EVP_aes_128_cbc(), NULL, key_chars, iv);
+    unsigned char decrypted_buffer[AES_BLOCK_SIZE];
+    EVP_DecryptUpdate(ctx, decrypted_buffer, &outlen, input_buffer, inlen);
+    printf("Plaintext is %s \n", decrypted_buffer);
+
     return 0;
 }
