@@ -2,6 +2,10 @@ import subprocess
 
 print("This is the server.")
 
-DH_server = subprocess.run(["go", "run", "DH_server/DH_server.go", "DH_server/server_main.go"], capture_output=True, text=True)
+while True:
 
-print(DH_server.stdout)
+    DH_server = subprocess.run(["./DH_server.exe"], capture_output=True, text=True)
+    DH_server_output = DH_server.stdout
+    print(DH_server_output)
+    shared_key = DH_server_output.split()[7]
+    print("Shared key is", shared_key)
