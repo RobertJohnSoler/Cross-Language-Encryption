@@ -19,5 +19,5 @@ func main() {
 	}
 	server := NewServer(conn, 128)
 	server.keyAgreementServer()
-	fmt.Println("Agreed key is ", server.key.String())
+	fmt.Println("Agreed key is", server.key.String())
 }
