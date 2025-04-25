@@ -6,3 +6,5 @@ int main(){
     printf("Shared key is %s. \n", key);
     return 0;
 }
+
+// need to account for cpp go file
