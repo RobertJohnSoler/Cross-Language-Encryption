@@ -1,5 +1,6 @@
-#include <stdio.h>
 #include <openssl/evp.h>
+#include <stdio.h>
+#include <string.h>
 #include "client_keygen.h"
 
 #define AES_BLOCK_SIZE 16
@@ -17,6 +18,13 @@ int main(){
     int outlen;
     int inlen = sizeof(char);
     EVP_EncryptInit_ex(ctx, EVP_aes_128_cbc(), NULL, key_chars, iv);    // initialize the AES cipher
+    
+    char* plaintxt = "hello";
+    memcpy(input_buffer, plaintxt, sizeof("test"));
     EVP_EncryptUpdate(ctx, output_buffer, &outlen, input_buffer, inlen);
+    
+    printf("Plaintext is %s \n", input_buffer);
+    printf("Ciphertext is %s \n", output_buffer);
+
     return 0;
 }
